@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
     <form action="" method="dialog" class="form">
-       <div class="center">
+      <div class="center">
         <h1>Login</h1>
-        <input type="email" placeholder="Email" id="email">
-        <input type="password" placeholder="Password" id="password">
+        <input type="email" placeholder="Email" id="email" required />
+        <input type="password" placeholder="Password" id="password" required />
         <button type="submit" id="submit">Login</button>
-        <p>Don't have an Account ? <span><a href="register.html" class="registerlink">Register</a></span></p>
-       </div>
+        <p>
+          Don't have an account?
+          <span><a href="register.html" class="registerlink">Register</a></span>
+        </p>
+      </div>
     </form>
     <script type="module" src="login.js"></script>
-</body>
+  </body>
 </html>

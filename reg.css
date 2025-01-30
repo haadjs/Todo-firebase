@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(to right, #2c3e50, #34495e); /* Darker gradient */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #ecf0f1; /* Lighter text color for dark mode */
+}
+
+.form {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(0, 0, 0, 0.7); /* Darker form background */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* Slightly stronger shadow */
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff; /* Ensure the title is readable */
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #34495e; /* Darker border color */
+  outline: none;
+  background-color: #2c3e50; /* Darker background for input fields */
+  color: #ecf0f1; /* Lighter text in input */
+}
+
+input:focus {
+  border: 2px solid #3498db; /* Brighter blue focus */
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.7); /* Bright blue shadow */
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  background-color: #3498db; /* Bright blue button */
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9; /* Slightly darker blue on hover */
+  transform: translateY(-2px); /* Slight hover effect */
+}
+
+button:active {
+  transform: translateY(0); /* Reset position when button is clicked */
+}
+
+.user {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.user:hover {
+  text-decoration: underline;
+  color: #3498db; /* Change color on hover */
+}
