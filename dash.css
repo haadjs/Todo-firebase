@@ -1,100 +1,113 @@
 /* General Styling */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 /* Container */
 .container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 350px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
 }
 
 /* Header */
 h1 {
-    color: #333;
-    margin-bottom: 20px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 /* Logout Button */
 .logout {
-    background: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 15px;
-    transition: background 0.3s ease;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background 0.3s ease;
 }
 
 .logout:hover {
-    background: #cc0000;
+  background: #cc0000;
 }
 
 /* Input and Add Button */
 #taskForm {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 #userinput {
-    flex: 1;
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease;
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
 #userinput:focus {
-    border-color: #007bff;
+  border-color: #007bff;
 }
 
 .addBtn {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .addBtn:hover {
-    background: #0056b3;
+  background: #0056b3;
 }
 
 /* Task List */
 #taskList {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 #taskList li {
-    background: #eaeaea;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    transition: background 0.3s ease;
+  background: #eaeaea;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  transition: background 0.3s ease;
 }
 
 #taskList li:hover {
-    background: #d4d4d4;
-    cursor: pointer;
+  background: #d4d4d4;
+  cursor: pointer;
+}
+.delBtn {
+  background: #ff4d4d;
+  color: white;
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-left: 50px;
 }
