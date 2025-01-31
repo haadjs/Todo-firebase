@@ -22,7 +22,7 @@ body {
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
-  width: 350px;
+  width: 100%;
 }
 
 /* Header */
@@ -95,6 +95,8 @@ h1 {
   margin: 5px 0;
   border-radius: 5px;
   transition: background 0.3s ease;
+  display: flex;
+  justify-content: space-between;
 }
 
 #taskList li:hover {
