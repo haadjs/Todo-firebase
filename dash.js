@@ -1,187 +1,83 @@
-// import {
-//   onAuthStateChanged,
-//   signOut,
-// } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
-// import { auth, db } from "./config.js";
-// import {
-//   collection,
-//   addDoc,
-//   getDocs,
-//   query,
-//   where,
-// } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
-
-// let addBtn = document.querySelector(".addBtn");
-// let userinp = document.querySelector("#userinput");
-// let tasklist = document.querySelector("#taskList");
-// // let Alltodo = [];
-
-// // User Authentication Check
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     const uid = user.uid;
-//     console.log(uid);
-//     getdatafromfire(user)
-//   } else {
-//     window.location = "./login.html";
-//   }
-// });
-
-// // Logout Function
-// const logout = document.querySelector(".logout");
-// logout.addEventListener("click", () => {
-//   signOut(auth)
-//     .then(() => {
-//       alert("Logout Successfully");
-//       window.location = "./login.html";
-//     })
-//     .catch(() => {
-//       alert("Something went wrong");
-//     });
-// });
-
-// // getdata
-// let getdatafromfire = async (user) => {
-//   if (!user) {
-//     console.error("User not logged in");
-//     return;
-//   }
-
-//   try {
-//     const q = query(
-//       collection(db, "todos"),
-//       where("uid", "==", user.uid)
-//     );
-
-//     const querySnapshot = await getDocs(q);
-//     const todos = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    
-//     console.log("User Todos:", todos);
-
-//   } catch (error) {
-//     console.error("Error fetching todos:", error);
-//   }
-// };// getdatafromfire();
-
-// // Add Todo Function
-// addBtn.addEventListener("click", async (eve) => {
-//   eve.preventDefault();
-//   if (!userinp.value.trim()) {
-//     alert("Please enter a task");
-//     return;
-//   }
-
-//   try {
-//     const docRef = await addDoc(collection(db, "todos"), {
-//       uid: auth.currentUser.uid,
-//       task: userinp.value,
-//       Timestamp : new Date()
-//     });
-//     userinp.value = ""; 
-//     getdatafromfire(user);  
-//   } catch (e) {
-//     console.error("Error adding document: ", e);
-//   }
-// });
-
-
-
-import {
-  onAuthStateChanged,
-  signOut,
-} from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { onAuthStateChanged , signOut } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 import { auth, db } from "./config.js";
-import {
-  collection,
-  addDoc,
-  getDocs,
-  query,
-  where,
-} from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
-
-let addBtn = document.querySelector(".addBtn");
-let userinp = document.querySelector("#userinput");
-let tasklist = document.querySelector("#taskList");
-
-// User Authentication Check
+import { collection, addDoc, getDocs , deleteDoc  } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js"; 
+// User check
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log("User ID:", user.uid);
-    getdatafromfire(user); // ✅ User ko pass karo taake function me error na aaye
+    const uid = user.uid;
+
   } else {
-    window.location = "./login.html";
+   window.location = './login.html'
   }
 });
+
+let logBtn = document.querySelector('.logout')
+let userinp = document.querySelector('#userinput')
+let tasklist = document.querySelector('#taskList')
+let addBtn = document.querySelector('.addBtn')
 
 // Logout Function
-const logout = document.querySelector(".logout");
-logout.addEventListener("click", () => {
-  signOut(auth)
-    .then(() => {
-      alert("Logout Successfully");
-      window.location = "./login.html";
-    })
-    .catch(() => {
-      alert("Something went wrong");
-    });
-});
+logBtn.addEventListener('click' , () => {
+  signOut(auth).then(() => {
+    alert('logout successfully')
+    window.location = './login.html'
+  }).catch((error) => {
+    alert(error)
+  });
+})
 
-// ✅ Get data only when user is logged in
-let getdatafromfire = async (user) => {
-  if (!user) {
-    console.error("User not logged in");
-    return;
-  }
- let allTodos = []
-  try {
-    const q = query(
-      collection(db, "todos"),
-      where("uid", "==", user.uid) // ✅ Corrected field name
-    );
 
-    const querySnapshot = await getDocs(q);
-    const todos = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    
-    // ✅ Show data in console
-    console.log("User Todos:", todos);
-    const gettodo = allTodos.push(...todos)
-    console.log(gettodo);
-  tasklist.innerHTML = ''
-    allTodos.forEach((item) =>{
-      tasklist.innerHTML += `<li>${item.task}</li>`
-    })
-    
-    
 
-  } catch (error) {
-    console.error("Error fetching todos:", error);
-  }
-};
-
-// Add Todo Function
-addBtn.addEventListener("click", async (eve) => {
-  eve.preventDefault();
-  if (!userinp.value.trim()) {
-    alert("Please enter a task");
-    return;
-  }
-
-  const user = auth.currentUser;
-  if (!user) {
-    alert("User not logged in!");
-    return;
+// set data Function
+addBtn.addEventListener('click' , async (evt) =>{
+  evt.preventDefault()
+  if (!userinp.value ){
+    alert('Please enter a task')
+    return; 
   }
 
   try {
-    await addDoc(collection(db, "todos"), {
-      uid: user.uid, // ✅ Use user.uid safely
-      task: userinp.value,
-      Timestamp: new Date()
+    const docRef = await addDoc(collection(db, "todos"), {
+      userUid: auth.currentUser.uid,
+      task:userinp.value,
+     Timestamp: new Date(),
     });
-
-    userinp.value = ""; 
-    getdatafromfire(user); // ✅ Call function with user data
+    userinp.value = ''
+    console.log("Document written with ID: ", docRef.id);
+getDatafirestore()
   } catch (e) {
     console.error("Error adding document: ", e);
   }
+
+
+})
+
+
+// get data Function
+let getDatafirestore = async () =>{
+  let alltodos = [];
+  const querySnapshot = await getDocs(collection(db, "todos"));
+  querySnapshot.forEach((doc) => {
+  alltodos.unshift(doc.data());
 });
+tasklist.innerHTML = ''
+  alltodos.forEach((item) =>{
+    tasklist.innerHTML += ` 
+         <li>
+          ${item.task}
+          <span>
+            <button class="delBtn">Delete</button>
+          </span>
+        </li> `;
+  })
+}
+getDatafirestore()
+
+// delete data Function
+let delBtn = document.querySelector('.delBtn')
+
+delBtn.addEventListener('click', async () =>{
+  await deleteDoc(doc(db, "todos", userUid));
+
+})
+

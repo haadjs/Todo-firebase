@@ -105,18 +105,16 @@ h1 {
 }
 
 /* Delete Button */
+/* Updated delete button */
 .delBtn {
   background: #ff4d4d;
   color: white;
-  display: flex;
-  justify-content: end;
-  flex-direction: row;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease;
-  margin-left: 50px;
+  margin-left: 10px;
 }
 
 .delBtn:hover {
