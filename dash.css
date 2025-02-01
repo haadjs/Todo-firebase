@@ -107,7 +107,7 @@ h1 {
 /* Delete Button */
 /* Updated delete button */
 .delBtn {
-  background: #ff4d4d;
+  background: #e70c0c;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -119,4 +119,18 @@ h1 {
 
 .delBtn:hover {
   background: #cc0000;
+}
+.update {
+  background: #02dfdf;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-left: 10px;
+}
+
+.update:hover {
+  background: #b35d5d;
 }
