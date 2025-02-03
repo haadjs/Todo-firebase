@@ -9,11 +9,14 @@ import {
   getDocs,
   deleteDoc,
   doc,
+  query,
+  where,
 } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
 // User check
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    const uid = user.uid;
+    getDatafirestore();
   } else {
     window.location = "./login.html";
   }
@@ -28,15 +31,15 @@ let addBtn = document.querySelector(".addBtn");
 logBtn.addEventListener("click", () => {
   signOut(auth)
     .then(() => {
-      alert("logout successfully");
+      alert("Logout successfully");
       window.location = "./login.html";
     })
     .catch((error) => {
-      alert(error);
+      alert(error.message);
     });
 });
 
-// set data Function
+// Add Data to Firestore
 addBtn.addEventListener("click", async (evt) => {
   evt.preventDefault();
   if (!userinp.value) {
@@ -48,7 +51,7 @@ addBtn.addEventListener("click", async (evt) => {
     const docRef = await addDoc(collection(db, "todos"), {
       userUid: auth.currentUser.uid,
       task: userinp.value,
-      Timestamp: new Date(),
+      timestamp: new Date(),
     });
     userinp.value = "";
     console.log("Document written with ID: ", docRef.id);
@@ -58,27 +61,29 @@ addBtn.addEventListener("click", async (evt) => {
   }
 });
 
-// get data Function
 let alltodos = [];
+// Fetch Data from Firestore
 let getDatafirestore = async () => {
-  alltodos.length = 0;
-  const querySnapshot = await getDocs(collection(db, "todos"));
+  alltodos.length = 0 ;
+  const q = query(
+    collection(db, "todos"),
+    where("userUid", "==", auth.currentUser.uid)
+  );
+  const querySnapshot = await getDocs(q);
+
   querySnapshot.forEach((doc) => {
-    alltodos.unshift(doc.data());
+    alltodos.unshift({ ...doc.data(), docID: doc.id });
   });
-  tasklist.innerHTML = "";
+  tasklist.innerHTML = ""; // Clear task list
   alltodos.forEach((item) => {
-    tasklist.innerHTML += ` 
-         <li>
-          ${item.task}
-          <span>
-            <button class="delBtn">Delete</button>
-            <button class="update">Update</button>
-          </span>
-        </li> `;
+    tasklist.innerHTML += `
+      <li>${item.task}
+      <span>
+        <button class="delBtn" >Delete</button>
+        <button class="update">Update</button>
+      </span>
+      </li>
+    `;
   });
 };
-getDatafirestore();
 
-const delbtn = document.querySelectorAll('.delBtn')
-const updateBtn = document.querySelectorAll('.update')
