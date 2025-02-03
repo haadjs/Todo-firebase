@@ -79,3 +79,6 @@ let getDatafirestore = async () => {
   });
 };
 getDatafirestore();
+
+const delbtn = document.querySelectorAll('.delBtn')
+const updateBtn = document.querySelectorAll('.update')

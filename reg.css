@@ -87,3 +87,6 @@ button:active {
   text-decoration: underline;
   color: #3498db; /* Change color on hover */
 }
+.loginbtn{
+  margin-top: 20px;
+}

@@ -3,9 +3,11 @@ import {
   sendEmailVerification,
   isSignInWithEmailLink,
   signInWithEmailLink,
+  signInWithPopup,
+  GoogleAuthProvider ,
 } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 
-import { auth } from "./config.js";
+import { auth, provider } from "./config.js";
 
 let username = document.querySelector("#name");
 let pass = document.querySelector("#password");
@@ -47,3 +49,23 @@ subBtn.addEventListener("click", () => {
   email.value = "";
   pass.value = "";
 });
+
+
+let loggoogle = document.querySelector('.loginbtn')
+
+loggoogle.addEventListener('click', () =>{
+
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+    window.location ='./dashbord.html'
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+  });
+
+})
