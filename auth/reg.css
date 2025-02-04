@@ -7,7 +7,11 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(to right, #6a0000, #b30000); /* Bloody Red Gradient */
+  background: linear-gradient(
+    to right,
+    #6a0000,
+    #b30000
+  ); /* Bloody Red Gradient */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,28 +124,28 @@ button:active {
 /* Responsive Design */
 @media (max-width: 500px) {
   .form {
-      padding: 25px;
+    padding: 25px;
   }
 
   h1 {
-      font-size: 26px;
+    font-size: 26px;
   }
 
   input,
   button {
-      font-size: 15px;
-      padding: 12px;
+    font-size: 15px;
+    padding: 12px;
   }
 }
 
 /* Fade In Animation */
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: translateY(-20px);
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }

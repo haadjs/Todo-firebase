@@ -64,7 +64,7 @@ addBtn.addEventListener("click", async (evt) => {
 let alltodos = [];
 // Fetch Data from Firestore
 let getDatafirestore = async () => {
-  alltodos.length = 0 ;
+  alltodos.length = 0;
   const q = query(
     collection(db, "todos"),
     where("userUid", "==", auth.currentUser.uid)
@@ -86,4 +86,3 @@ let getDatafirestore = async () => {
     `;
   });
 };
-

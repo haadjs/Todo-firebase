@@ -1,3 +1,4 @@
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
@@ -5,83 +6,129 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
-  background: linear-gradient(to right, #2c3e50, #34495e); /* Darker gradient */
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(
+    to right,
+    #6a0000,
+    #b30000
+  ); /* Bloody Red Gradient */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #ecf0f1; /* Lighter text color for dark mode */
+  color: #eee;
 }
 
+/* Form Container */
 .form {
   width: 100%;
   max-width: 400px;
-  background-color: rgba(0, 0, 0, 0.7); /* Darker form background */
+  background-color: rgba(0, 0, 0, 0.85); /* Dark Transparent Background */
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* Slightly stronger shadow */
+  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.5); /* Red Glow Effect */
+  animation: fadeIn 1s ease-in-out;
 }
 
 .center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
 }
 
+/* Title */
 h1 {
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
-  color: #fff; /* Ensure the title is readable */
+  background: linear-gradient(to right, #ff0000, #8b0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 0px 15px rgba(255, 0, 0, 0.7);
 }
 
+/* Input Fields */
 input {
   width: 100%;
   padding: 14px;
   font-size: 16px;
   border-radius: 8px;
-  border: 1px solid #34495e; /* Darker border color */
+  border: 1px solid #8b0000; /* Dark Red Border */
   outline: none;
-  background-color: #2c3e50; /* Darker background for input fields */
-  color: #ecf0f1; /* Lighter text in input */
+  background-color: #1a1a1a; /* Dark Background */
+  color: #eee;
+  transition: border 0.3s, box-shadow 0.3s;
 }
 
 input:focus {
-  border: 2px solid #3498db; /* Brighter blue focus */
-  box-shadow: 0 0 10px rgba(52, 152, 219, 0.7); /* Bright blue shadow */
+  border: 2px solid #ff4d4d;
+  box-shadow: 0 0 12px rgba(255, 77, 77, 0.8);
 }
 
+/* Login Button */
 button {
   width: 100%;
   padding: 14px;
   font-size: 18px;
   font-weight: 600;
   border: none;
-  background-color: #3498db; /* Bright blue button */
-  color: #fff;
+  background: linear-gradient(to right, #b30000, #ff0000);
+  color: white;
   cursor: pointer;
   border-radius: 8px;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 5px 15px rgba(255, 0, 0, 0.5);
 }
 
 button:hover {
-  background-color: #2980b9; /* Slightly darker blue on hover */
-  transform: translateY(-2px); /* Slight hover effect */
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(255, 0, 0, 0.7);
 }
 
 button:active {
-  transform: translateY(0); /* Reset position when button is clicked */
+  transform: scale(1);
 }
 
+/* Register Link */
 .registerlink {
   text-decoration: none;
-  color: #3498db;
+  color: #ff4d4d;
   font-size: 14px;
+  margin-top: 10px;
+  transition: color 0.3s;
 }
 
 .registerlink:hover {
   text-decoration: underline;
-  color: #2980b9; /* Change color on hover */
+  color: #ff0000;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+  .form {
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  input,
+  button {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
