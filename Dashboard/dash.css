@@ -3,32 +3,39 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  background-color: #2c3e50; /* Dark background */
+  background-color: #1a1a2e;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #ecf0f1; /* Light text color */
+  color: #ffffff;
+  transition: background 0.5s ease;
 }
 
 /* Container */
 .container {
-  background: #34495e; /* Darker background for container */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  background: #222831;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
   width: 100%;
+  max-width: 400px;
+  transition: transform 0.3s ease;
+}
+.container:hover {
+  transform: scale(1.02);
 }
 
 /* Header */
 h1 {
-  color: #ecf0f1; /* Light text color */
+  color: #c56cf0;
   margin-bottom: 20px;
+  transition: color 0.3s ease;
 }
 
 /* Logout Button */
@@ -36,15 +43,15 @@ h1 {
   background: #ff4d4d;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 12px 18px;
+  border-radius: 8px;
   cursor: pointer;
   margin-bottom: 15px;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s;
 }
-
 .logout:hover {
   background: #cc0000;
+  transform: scale(1.1);
 }
 
 /* Input and Add Button */
@@ -56,31 +63,31 @@ h1 {
 
 #userinput {
   flex: 1;
-  padding: 10px;
-  border: 2px solid #ddd;
-  border-radius: 5px;
+  padding: 12px;
+  border: 2px solid #7d5fff;
+  border-radius: 8px;
   outline: none;
-  transition: border-color 0.3s ease;
-  background-color: #34495e; /* Darker background for input */
-  color: #ecf0f1; /* Light text in input */
+  transition: all 0.3s ease;
+  background-color: #393e46;
+  color: #ffffff;
 }
-
 #userinput:focus {
-  border-color: #007bff;
+  border-color: #c56cf0;
+  box-shadow: 0px 0px 10px rgba(197, 108, 240, 0.7);
 }
 
 .addBtn {
-  background: #007bff;
+  background: #7d5fff;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 12px 18px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s;
 }
-
 .addBtn:hover {
-  background: #0056b3;
+  background: #c56cf0;
+  transform: scale(1.1);
 }
 
 /* Task List */
@@ -90,47 +97,46 @@ h1 {
 }
 
 #taskList li {
-  background: #455a64; /* Dark task background */
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
-  transition: background 0.3s ease;
+  background: #4a4e69;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease, transform 0.2s;
 }
-
 #taskList li:hover {
-  background: #37474f; /* Darker hover effect */
-  cursor: pointer;
+  background: #6a0572;
+  transform: scale(1.05);
 }
 
 /* Delete Button */
-/* Updated delete button */
 .delBtn {
   background: #e70c0c;
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
-  margin-left: 10px;
+  transition: background 0.3s ease, transform 0.2s;
 }
-
 .delBtn:hover {
   background: #cc0000;
-}
-.update {
-  background: #02dfdf;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  margin-left: 10px;
+  transform: scale(1.1);
 }
 
+/* Update Button */
+.update {
+  background: #00adb5;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
 .update:hover {
-  background: #b35d5d;
+  background: #393e46;
+  transform: scale(1.1);
 }
