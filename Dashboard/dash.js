@@ -2,7 +2,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
-import { auth, db } from "./config.js";
+import { auth, db } from "../Main/config.js";
 import {
   collection,
   addDoc,
@@ -18,7 +18,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     getDatafirestore();
   } else {
-    window.location = "./login.html";
+    window.location = "../auth/login.html";
   }
 });
 
@@ -32,7 +32,7 @@ logBtn.addEventListener("click", () => {
   signOut(auth)
     .then(() => {
       alert("Logout successfully");
-      window.location = "./login.html";
+      window.location = "../auth/login.html";
     })
     .catch((error) => {
       alert(error.message);

@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider ,
 } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
 
-import { auth, provider } from "./config.js";
+import { auth, provider } from "../Main/config.js";
 
 let username = document.querySelector("#name");
 let pass = document.querySelector("#password");
@@ -37,7 +37,7 @@ subBtn.addEventListener("click", () => {
           if (user.emailVerified) {
             clearInterval(checkVerification);
             alert("Email verified! Now you can log in.");
-            window.location = "./login.html";
+            window.location = "../auth/login.html";
           }
         });
       }, 2000); // Check every 3 seconds
@@ -60,7 +60,7 @@ loggoogle.addEventListener('click', () =>{
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
-    window.location ='./dashbord.html'
+    window.location ='../Dashboard/dashbord.html'
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;

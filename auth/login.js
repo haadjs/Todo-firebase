@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
-import { auth } from "./config.js";
+import { auth } from "../Main/config.js";
 
 let username = document.querySelector("#name");
 let pass = document.querySelector("#password");
@@ -16,7 +16,7 @@ subBtn.addEventListener("click", () => {
     .then((userCredential) => {
       const user = userCredential.user;
       alert("succesfully Loged In");
-      window.location = "./dashbord.html";
+      window.location = "../Dashboard/dashbord.html";
     })
     .catch((error) => {
       const errorMessage = error.message;
