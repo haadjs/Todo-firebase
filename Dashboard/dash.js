@@ -11,6 +11,7 @@ import {
   doc,
   query,
   where,
+  updateDoc ,
 } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
 // User check
@@ -85,4 +86,30 @@ let getDatafirestore = async () => {
       </li>
     `;
   });
-};
+  const delBtns = document.querySelectorAll(".delBtn");
+  delBtns.forEach((btn,index) => {
+   btn.addEventListener("click", async () =>{
+    let docID = alltodos[index].docID;
+    await deleteDoc(doc(db, "todos", docID));
+    alltodos.splice(index, 1);
+    getDatafirestore()
+   })
+  });
+
+  const updBtns = document.querySelectorAll(".update");
+  updBtns.forEach((btn, index) => {
+    btn.addEventListener("click", async () => {
+      let docId = alltodos[index].docID;
+      let updateTask = prompt("Change your Task");
+      if (!updateTask) {
+        return;
+      }
+      const washingtonRef = doc(db, "todos", docId);
+      await updateDoc(washingtonRef, {
+        task: updateTask,
+      });
+      alltodos[index].task = updateTask;
+      getDatafirestore();
+    });
+  });
+}
