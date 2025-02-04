@@ -23,19 +23,30 @@ let subBtn = document.querySelector("#submit");
 // Sign-up Function
 subBtn.addEventListener("click", () => {
   if (!email.value || !password.value) {
-    alert("Please fill the fields");
+    swal("Please Fill All Fields", "", "error");
     return;
   }
 
   signInWithEmailAndPassword(auth, email.value, pass.value)
     .then((userCredential) => {
       const user = userCredential.user;
-      alert("succesfully Loged In");
-      window.location = "../Dashboard/dashbord.html";
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "You  have successfully logged in",
+        showConfirmButton: false,
+        timer: 1500
+      }).then(() => {
+        window.location = "../Dashboard/dashbord.html";
+      });
     })
     .catch((error) => {
       const errorMessage = error.message;
-      alert(errorMessage);
+      Swal.fire({
+        title: "",
+        text: errorMessage,
+        icon: "error",
+      });
     });
 
   email.value = "";

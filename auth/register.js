@@ -17,7 +17,7 @@ let subBtn = document.querySelector("#submit");
 // ✅ Sign-up Function
 subBtn.addEventListener("click", () => {
   if (!email.value || !pass.value) {
-    alert("Please fill all fields");
+    swal("Please Fill All Fields", "", "error");
     return;
   }
 
