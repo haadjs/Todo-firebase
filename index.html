@@ -1,55 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Landing Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-</head>
-<body>
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="./img/logo1-removebg-preview.png" alt="Logo" width="180px">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link btn-custom" href="#">Log In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-custom" href="#">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="./img/logo1-removebg-preview.png"
+            alt="Logo"
+            class="logo-img"
+          />
+          <span class="brand-text">Pro.</span>
+        </a>
+        <button
+          class="navbar-toggler custom-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link btn-custom" href="#">Log In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn-custom" href="#">Sign Up</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <div class="container main">
-        <div class="aside1">
-            <img src="./img/DALL·E 2025-02-04 15.38.41 - An illustration for a To-Do app landing page. The image should have a modern, clean, and minimalistic design with a blue and white color scheme. It sh.webp" alt="Task Management" class="hero-img">
-        </div>
-
-        <div class="aside2">
-            <h2 class="heading">Task Management & To-Do List</h2>
-            <p class="para">
-                This productive tool is designed to help you manage your tasks project-wise conveniently!
-            </p>
-            <a href="./auth/register.html" class="btn-start">
-                Let's Start <i class="fa-solid fa-arrow-right-to-bracket fa-fade"></i>
-            </a>
-        </div>
+      <div class="aside1">
+        <img
+          src="./img/DALL·E 2025-02-04 15.38.41 - An illustration for a To-Do app landing page. The image should have a modern, clean, and minimalistic design with a blue and white color scheme. It sh.webp"
+          alt="Task Management"
+          class="hero-img"
+        />
+      </div>
+      <div class="aside2">
+        <h2 class="heading">Task Management & To-Do List</h2>
+        <p class="para">
+          This productive tool is designed to help you manage your tasks
+          project-wise conveniently!
+        </p>
+        <a href="./auth/register.html" class="btn-start">
+          Let's Start <i class="fa-solid fa-arrow-right-to-bracket fa-fade"></i>
+        </a>
+      </div>
     </div>
 
     <script type="module" src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>
