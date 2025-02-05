@@ -32,7 +32,9 @@ let addBtn = document.querySelector(".addBtn");
 logBtn.addEventListener("click", () => {
   signOut(auth)
     .then(() => {
-      alert("Logout successfully");
+      swal("", "You Succesfully Log out!", "success");;
+     
+    }).then(() => {
       window.location = "../auth/login.html";
     })
     .catch((error) => {
@@ -44,7 +46,8 @@ logBtn.addEventListener("click", () => {
 addBtn.addEventListener("click", async (evt) => {
   evt.preventDefault();
   if (!userinp.value) {
-    alert("Please enter a task");
+    swal("PLease Enter a Task!");
+
     return;
   }
 
@@ -87,19 +90,45 @@ let getDatafirestore = async () => {
     `;
   });
   const delBtns = document.querySelectorAll(".delBtn");
-  delBtns.forEach((btn,index) => {
-   btn.addEventListener("click", async () =>{
-    let docID = alltodos[index].docID;
-    await deleteDoc(doc(db, "todos", docID));
-    alltodos.splice(index, 1);
-    getDatafirestore()
-   })
+
+  delBtns.forEach((btn, index) => {
+    btn.addEventListener("click", async () => {
+      // Confirmation dialog
+      const willDelete = await Swal.fire({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this task!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, keep it",
+        dangerMode: true,
+      });
+  
+      if (willDelete.isConfirmed) {
+        let docID = alltodos[index].docID;
+        await deleteDoc(doc(db, "todos", docID));
+        alltodos.splice(index, 1);
+        
+        // Show success message
+        await Swal.fire("Deleted!", "Your task has been deleted.", "success");
+  
+        // Refresh data after deletion
+        getDatafirestore();
+      }
+    });
   });
+  
 
   const updBtns = document.querySelectorAll(".update");
   updBtns.forEach((btn, index) => {
     btn.addEventListener("click", async () => {
       let docId = alltodos[index].docID;
+      swal("Write something here:", {
+        content: "input",
+      })
+      .then((value) => {
+        swal(`You typed: ${value}`);
+      });
       let updateTask = prompt("Change your Task");
       if (!updateTask) {
         return;
