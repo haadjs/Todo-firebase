@@ -1,15 +1,15 @@
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
-  isSignInWithEmailLink,
-  signInWithEmailLink,
   signInWithPopup,
   GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { collection,addDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
-import { auth, provider } from "../Main/config.js";
 
-let username = document.querySelector("#name");
+import { auth, provider,db } from "../Main/config.js";
+
+let username = document.querySelector("#username");
 let pass = document.querySelector("#password");
 let email = document.querySelector("#email");
 let subBtn = document.querySelector("#submit");
@@ -22,10 +22,18 @@ subBtn.addEventListener("click", () => {
   }
 
   createUserWithEmailAndPassword(auth, email.value, pass.value)
-    .then((userCredential) => {
+    .then(async(userCredential) => {
       const user = userCredential.user;
       swal( "Your Email Verification is Send \n Check your Email after you log In ",);
 
+      try {
+        const docRef = await addDoc(collection(db, "username"), {
+        userName : username.value,
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
       return sendEmailVerification(user).then(() => user);
     })
     .then((user) => {
@@ -42,7 +50,7 @@ subBtn.addEventListener("click", () => {
     .catch((error) => { 
       swal( error.message, "error" );
     });
-
+    username.value = "";
   email.value = "";
   pass.value = "";
 });

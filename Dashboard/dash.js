@@ -101,7 +101,6 @@ let getDatafirestore = async () => {
         showCancelButton: true,
         confirmButtonText: "Yes, delete it!",
         cancelButtonText: "No, keep it",
-        dangerMode: true,
       });
   
       if (willDelete.isConfirmed) {
