@@ -15,25 +15,24 @@ let email = document.querySelector("#email");
 let subBtn = document.querySelector("#submit");
 
 //  Sign-up Function
-subBtn.addEventListener("click", () => {
+subBtn.addEventListener("click",async () => {
   if (!email.value || !pass.value) {
     swal("Please Fill All Fields", "", "error");
     return;
   }
-
+  try {
+    const docRef = await addDoc(collection(db, "username"), {
+    userName : username.value,
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
   createUserWithEmailAndPassword(auth, email.value, pass.value)
     .then(async(userCredential) => {
       const user = userCredential.user;
       swal( "Your Email Verification is Send \n Check your Email after you log In ",);
 
-      try {
-        const docRef = await addDoc(collection(db, "username"), {
-        userName : username.value,
-        });
-        console.log("Document written with ID: ", docRef.id);
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
       return sendEmailVerification(user).then(() => user);
     })
     .then((user) => {

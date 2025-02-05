@@ -19,6 +19,21 @@ let logBtn = document.querySelector(".logout-btn");
 let userinp = document.querySelector("#userinput");
 let tasklist = document.querySelector("#taskList");
 let addBtn = document.querySelector(".addBtn");
+let username = document.querySelector("#username");
+let names = [];
+async function getUsername() {
+  const querySnapshot = await getDocs(collection(db, "username"));
+  querySnapshot.forEach((doc) => {
+    names.push(doc.data());
+    console.log(names);
+  });
+
+  names.forEach((name) => {
+    username.innerHTML = `Welcome, ${name.userName}`;
+  });
+}
+
+getUsername();
 
 // Fetch Data from Firestore
 let alltodos = [];
@@ -96,8 +111,8 @@ onAuthStateChanged(auth, (user) => {
 
 // Logout Function
 logBtn.addEventListener("click", () => {
-  signOut(auth)
-    alert("You have been logged out")
+  signOut(auth);
+  alert("You have been logged out")
     .then(() => {
       window.location = "../auth/login.html";
     })
