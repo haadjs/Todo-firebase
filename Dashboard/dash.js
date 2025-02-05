@@ -122,13 +122,7 @@ let getDatafirestore = async () => {
   const updBtns = document.querySelectorAll(".update");
   updBtns.forEach((btn, index) => {
     btn.addEventListener("click", async () => {
-      let docId = alltodos[index].docID;
-      swal("Write something here:", {
-        content: "input",
-      })
-      .then((value) => {
-        swal(`You typed: ${value}`);
-      });
+      let docId = alltodos[index].docid;
       let updateTask = prompt("Change your Task");
       if (!updateTask) {
         return;
