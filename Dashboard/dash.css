@@ -83,11 +83,11 @@ h1 {
   background: #ff0000;
   color: white;
   border: none;
-  padding: 12px 18px;
-  border-radius: 8px;
+  padding: 8px 16px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s;
   margin-top: 10px;
+  border-radius: 30px;
 }
 
 .addBtn:hover {
@@ -105,6 +105,7 @@ h1 {
   background: #4a0000;
   padding: 12px;
   margin: 8px 0;
+  margin-top: 10px;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -115,6 +116,48 @@ h1 {
 
 #taskList li:hover {
   background: #6a0000;
-  transform: scale(1.05);
 }
-</style>
+.delBtn{
+  background: #d60101;
+  color: white;
+  border: none;
+  font-size: 0.7rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-weight: 600;
+}
+.update{
+  background: #fcad04;
+  color: white;
+  border: none;
+  font-size: 0.7rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-weight: 600;
+
+}
+/* Task List - Enable Scroll After 4 Tasks */
+#taskList {
+  list-style: none;
+  padding: 0;
+  max-height: 200px; /* Adjust height as needed */
+  overflow-y: auto;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #ff0000 #222; /* Scrollbar color */
+}
+
+/* Custom Scrollbar for Webkit Browsers (Chrome, Edge, Safari) */
+#taskList::-webkit-scrollbar {
+  width: 8px;
+}
+
+#taskList::-webkit-scrollbar-thumb {
+  background-color: #ff0000;
+  border-radius: 10px;
+}
+
+#taskList::-webkit-scrollbar-track {
+  background: #222;
+}
