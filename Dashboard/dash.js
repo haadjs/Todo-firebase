@@ -55,8 +55,8 @@ let getDatafirestore = async () => {
     tasklist.innerHTML += `
       <li>${item.task}
       <span>
-        <button class="delBtn" data-id="${index}">Delete</button>
-        <button class="update" data-id="${index}">Update</button>
+        <button class="delBtn" data-id="${index}">Delete <i class="fa-solid fa-trash-can" style="color: #ffffff;"></i></button>
+        <button class="update" data-id="${index}">Update <i class="fa-solid fa-pen-nib" style="color: #ffffff;"></i></button>
       </span>
       </li>
     `;

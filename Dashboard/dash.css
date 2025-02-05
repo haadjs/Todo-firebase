@@ -36,6 +36,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 80vh;
+  
 }
 
 .main2 {
@@ -44,11 +45,10 @@ body {
   border-radius: 15px;
   box-shadow: 0px 10px 20px rgba(255, 0, 0, 0.5);
   text-align: center;
-  width: 70%;
-  max-width: 600px;
+  width: 85%;
+  max-width: 800px; 
   transition: transform 0.3s ease;
 }
-
 .main2:hover {
   transform: scale(1.05);
 }
@@ -87,7 +87,7 @@ h1 {
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s;
   margin-top: 10px;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .addBtn:hover {
@@ -121,7 +121,7 @@ h1 {
   background: #d60101;
   color: white;
   border: none;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   padding: 6px 12px;
   cursor: pointer;
   border-radius: 20px;
@@ -131,7 +131,7 @@ h1 {
   background: #fcad04;
   color: white;
   border: none;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   padding: 6px 12px;
   cursor: pointer;
   border-radius: 20px;
